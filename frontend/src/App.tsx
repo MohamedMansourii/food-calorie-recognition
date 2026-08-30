@@ -1,76 +1,169 @@
-// Phase 0 shell: upload -> preview/replace -> analyze -> raw predictions.
-// The full results screen lands in Phase 3.
-import { useState } from "react";
+// App shell: health banner, upload -> preview -> analyze -> results,
+// session history, manual correction. FR-01/02/03/04/05/07/08/09.
+import { useEffect, useRef, useState } from "react";
+import {
+  analyzeImage,
+  checkHealth,
+  getNutrition,
+  type AnalyzeResult,
+  type FoodSearchHit,
+  type Nutrition,
+} from "./api";
+import HistorySidebar, { type HistoryEntry } from "./components/HistorySidebar";
+import ResultView from "./components/ResultView";
 import UploadArea from "./components/UploadArea";
-import { analyzeImage, type AnalyzeResult } from "./api";
 
 export default function App() {
+  const [backendUp, setBackendUp] = useState<boolean | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [result, setResult] = useState<AnalyzeResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<AnalyzeResult | null>(null);
+  const [nutrition, setNutrition] = useState<Nutrition | null>(null);
+  const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
+  const [grams, setGrams] = useState(0);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const nextId = useRef(1);
+
+  useEffect(() => {
+    checkHealth().then(setBackendUp);
+  }, []);
 
   const selectFile = (f: File) => {
     setError(null);
     setResult(null);
+    setNutrition(null);
+    setSelectedLabel(null);
     setFile(f);
-    setPreviewUrl((old) => {
-      if (old) URL.revokeObjectURL(old);
-      return URL.createObjectURL(f);
-    });
+    setPreviewUrl(URL.createObjectURL(f));
+  };
+
+  const reset = () => {
+    setFile(null);
+    setPreviewUrl(null);
+    setResult(null);
+    setNutrition(null);
+    setSelectedLabel(null);
+    setError(null);
   };
 
   const analyze = async () => {
-    if (!file) return;
+    if (!file || busy) return;
     setBusy(true);
     setError(null);
     try {
-      setResult(await analyzeImage(file));
+      const res = await analyzeImage(file);
+      setResult(res);
+      setNutrition(res.nutrition);
+      setSelectedLabel(res.predictions[0]?.label ?? null);
+      if (res.nutrition) {
+        setGrams(res.nutrition.default_portion_g);
+        setHistory((h) => [
+          {
+            id: nextId.current++,
+            thumbUrl: previewUrl!,
+            displayName: res.nutrition!.display_name,
+            kcal: res.nutrition!.estimate.kcal,
+            portionG: res.nutrition!.estimate.portion_g,
+            time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          },
+          ...h,
+        ]);
+      }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Analysis failed");
+      setError(e instanceof Error ? e.message : "Analysis failed — is the backend running?");
     } finally {
       setBusy(false);
     }
   };
 
+  // Alternative chip or correction-search pick: fetch nutrition for that food.
+  const pickFood = async (hit: FoodSearchHit) => {
+    try {
+      const n = await getNutrition(hit.label);
+      setSelectedLabel(hit.label);
+      setNutrition(n);
+      setGrams(n.default_portion_g);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load nutrition");
+    }
+  };
+
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-2xl font-bold">AI Food &amp; Calories Recognition</h1>
-      <p className="mb-6 text-sm text-slate-500">Estimates only — not medical or dietary advice.</p>
-
-      {!file && <UploadArea onImageSelect={selectFile} onError={setError} />}
-
-      {file && previewUrl && (
-        <div className="rounded-2xl bg-white p-4 shadow">
-          <img src={previewUrl} alt="Meal preview" className="max-h-80 w-full rounded-xl object-contain" />
-          <div className="mt-4 flex gap-3">
-            <button
-              onClick={analyze}
-              disabled={busy}
-              className="rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white disabled:opacity-50"
-            >
-              {busy ? "Analyzing…" : "Analyze"}
-            </button>
-            <button
-              onClick={() => {
-                setFile(null);
-                setResult(null);
-              }}
-              className="rounded-lg border border-slate-300 px-4 py-2"
-            >
-              Replace
-            </button>
-          </div>
+    <div className="min-h-screen">
+      {backendUp === false && (
+        <div className="bg-red-600 px-4 py-2 text-center text-sm font-medium text-white">
+          Backend unreachable — start the API server, then reload this page.
         </div>
       )}
+      <div className="mx-auto max-w-5xl px-4 py-8">
+        <header className="mb-6">
+          <h1 className="text-2xl font-bold text-slate-900">AI Food &amp; Calories Recognition</h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Upload one meal photo → get the food, calories and macros.{" "}
+            <span className="font-medium">Estimates only — not medical or dietary advice.</span>
+          </p>
+        </header>
 
-      {error && <p className="mt-4 rounded-lg bg-red-50 p-3 text-red-700">{error}</p>}
-      {result && (
-        <pre className="mt-4 overflow-x-auto rounded-lg bg-slate-100 p-3 text-xs">
-          {JSON.stringify(result, null, 2)}
-        </pre>
-      )}
+        <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
+          <main className="space-y-4">
+            {!file && <UploadArea onImageSelect={selectFile} onError={setError} disabled={busy} />}
+
+            {file && previewUrl && !result && (
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <img
+                  src={previewUrl}
+                  alt="Meal preview"
+                  className="max-h-96 w-full rounded-xl object-contain"
+                />
+                <div className="mt-4 flex gap-3">
+                  <button
+                    onClick={analyze}
+                    disabled={busy || backendUp === false}
+                    className="rounded-lg bg-emerald-600 px-5 py-2 font-medium text-white hover:bg-emerald-700 disabled:opacity-50"
+                  >
+                    {busy ? "Analyzing…" : "Analyze"}
+                  </button>
+                  <button
+                    onClick={reset}
+                    disabled={busy}
+                    className="rounded-lg border border-slate-300 px-4 py-2 hover:bg-slate-50 disabled:opacity-50"
+                  >
+                    Replace photo
+                  </button>
+                </div>
+                {busy && (
+                  <p className="mt-3 animate-pulse text-sm text-slate-500">
+                    Running the recognition model…
+                  </p>
+                )}
+              </div>
+            )}
+
+            {result && previewUrl && (
+              <ResultView
+                imageUrl={previewUrl}
+                result={result}
+                nutrition={nutrition}
+                selectedLabel={selectedLabel}
+                grams={grams}
+                onGramsChange={setGrams}
+                onPickFood={pickFood}
+                onReset={reset}
+              />
+            )}
+
+            {error && (
+              <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm text-red-700">
+                {error}
+              </p>
+            )}
+          </main>
+
+          <HistorySidebar entries={history} />
+        </div>
+      </div>
     </div>
   );
 }
