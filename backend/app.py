@@ -8,6 +8,7 @@ import os
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
+import nutrition
 from config import Config
 from model import get_model
 
@@ -61,13 +62,32 @@ def _build_result(predictions: list[dict], latency_ms: float) -> dict:
     else:
         status = "no_food"
 
-    result = {
+    enriched = [
+        {**p, "display_name": nutrition.display_name(p["label"])} for p in predictions
+    ]
+    return {
         "status": status,
-        "predictions": predictions,
+        "predictions": enriched,
+        # No nutrition when nothing matched confidently enough (FR-04/05 path).
+        "nutrition": nutrition.nutrition_block(enriched[0]["label"]) if status != "no_food" else None,
         "latency_ms": latency_ms,
         "disclaimer": "Estimates only — not medical or dietary advice.",
     }
-    return result
+
+
+@app.route("/api/foods", methods=["GET"])
+def foods_search():
+    """FR-05: searchable dropdown backing — names + aliases, max 10 hits."""
+    return jsonify({"results": nutrition.search(request.args.get("q", ""), limit=10)})
+
+
+@app.route("/api/foods/<label>", methods=["GET"])
+def food_nutrition(label: str):
+    """Nutrition for a manually selected / corrected food."""
+    block = nutrition.nutrition_block(label)
+    if block is None:
+        return jsonify({"error": f"Unknown food '{label}'."}), 404
+    return jsonify(block)
 
 
 # --- error handlers -------------------------------------------------------
