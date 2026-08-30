@@ -25,6 +25,7 @@ export default function App() {
   const [grams, setGrams] = useState(0);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const nextId = useRef(1);
+  const currentEntryId = useRef<number | null>(null); // history row for the photo on screen
 
   useEffect(() => {
     checkHealth().then(setBackendUp);
@@ -57,24 +58,29 @@ export default function App() {
       setResult(res);
       setNutrition(res.nutrition);
       setSelectedLabel(res.predictions[0]?.label ?? null);
+      currentEntryId.current = null;
       if (res.nutrition) {
         setGrams(res.nutrition.default_portion_g);
-        setHistory((h) => [
-          {
-            id: nextId.current++,
-            thumbUrl: previewUrl!,
-            displayName: res.nutrition!.display_name,
-            kcal: res.nutrition!.estimate.kcal,
-            portionG: res.nutrition!.estimate.portion_g,
-            time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          },
-          ...h,
-        ]);
+        upsertHistory(res.nutrition.display_name, res.nutrition.estimate.kcal, res.nutrition.estimate.portion_g);
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Analysis failed — is the backend running?");
     } finally {
       setBusy(false);
+    }
+  };
+
+  // Create or update the history row for the photo currently on screen, so
+  // corrections and alternative picks are reflected instead of lost (FR-09).
+  const upsertHistory = (displayName: string, kcal: number, portionG: number) => {
+    const time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    if (currentEntryId.current !== null) {
+      const id = currentEntryId.current;
+      setHistory((h) => h.map((e) => (e.id === id ? { ...e, displayName, kcal, portionG } : e)));
+    } else {
+      const id = nextId.current++;
+      currentEntryId.current = id;
+      setHistory((h) => [{ id, thumbUrl: previewUrl!, displayName, kcal, portionG, time }, ...h]);
     }
   };
 
@@ -85,6 +91,7 @@ export default function App() {
       setSelectedLabel(hit.label);
       setNutrition(n);
       setGrams(n.default_portion_g);
+      upsertHistory(n.display_name, n.estimate.kcal, n.estimate.portion_g);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not load nutrition");
     }

@@ -69,7 +69,13 @@ First analyze call downloads the model (~350 MB) into the Hugging Face cache; af
 ## Measured accuracy
 
 <!-- ACCURACY:BEGIN -->
-Run `scripts/evaluate.py` to generate this section.
+| Metric | Value |
+|---|---|
+| Top-1 accuracy | **87.0%** (87/100) |
+| Top-3 accuracy | **97.0%** (97/100) |
+| Mean latency (CPU) | 1082 ms |
+
+Measured on 100 held-out Food-101 test images (20 common classes × 5) on the dev laptop — consistent with the model's published ~89% over the full test set.
 <!-- ACCURACY:END -->
 
 Full tables: [docs/accuracy-report.md](docs/accuracy-report.md).
