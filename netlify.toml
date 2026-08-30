@@ -1,0 +1,9 @@
+# Netlify: static frontend built in Space mode (recognition via HF Space,
+# nutrition/search client-side). SPA fallback only — no API proxy needed.
+[build]
+  publish = "frontend/dist-netlify"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

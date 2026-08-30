@@ -101,7 +101,7 @@ export default function App() {
     <div className="min-h-screen">
       {backendUp === false && (
         <div className="bg-red-600 px-4 py-2 text-center text-sm font-medium text-white">
-          Backend unreachable — start the API server, then reload this page.
+          Recognition service unreachable — check that the backend is running, then reload this page.
         </div>
       )}
       <div className="mx-auto max-w-5xl px-4 py-8">

@@ -80,13 +80,28 @@ Measured on 100 held-out Food-101 test images (20 common classes × 5) on the de
 
 Full tables: [docs/accuracy-report.md](docs/accuracy-report.md).
 
-## Deploy (free tier)
+## Live deployment (all free tier)
+
+| Piece | Where | URL |
+|---|---|---|
+| Web app (frontend) | Netlify | https://food-calorie-recognition.netlify.app |
+| Recognition engine | Hugging Face Space (Gradio, ZeroGPU free) | https://huggingface.co/spaces/mansourismatic/food-calorie-recognition |
+
+The deployed frontend is built in **Space mode** (`VITE_SPACE_ID=mansourismatic/food-calorie-recognition`): recognition goes through the Space via `@gradio/client`, while food search and all nutrition math run client-side from the bundled `data/*.json` (see `src/lib/nutrition.ts`). The default build (no env) talks to the local Flask API instead — same `api.ts` interface, two backends.
+
+```bash
+cd frontend && VITE_SPACE_ID=mansourismatic/food-calorie-recognition npx vite build --outDir dist-netlify && netlify deploy --prod --dir dist-netlify
+```
+
+First request after the Space has been asleep can take ~30–60 s (free-tier cold start); after that ~1–2 s per photo.
+
+### Docker (alternative single-container deploy)
 
 ```bash
 docker build -t food-calories . && docker run -p 8000:8000 food-calories
 ```
 
-One container serves everything (frontend baked in, model baked in). Works as-is on Render/Railway free tiers — set nothing but the port.
+One container serves everything (frontend + model baked in) — for any Docker host. Note: HF Docker Spaces and Render's torch-capable tiers are paid now; the split deploy above is the free path.
 
 ## Limitations (honest list)
 
