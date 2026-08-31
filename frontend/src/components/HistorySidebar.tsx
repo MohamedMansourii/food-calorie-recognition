@@ -1,4 +1,6 @@
 // In-session history (FR-09) — memory only, gone on refresh, no accounts.
+import { ClockIcon } from "./icons";
+
 export interface HistoryEntry {
   id: number;
   thumbUrl: string;
@@ -16,7 +18,7 @@ export default function HistorySidebar({ entries }: Props) {
   return (
     <aside className="h-fit rounded-3xl bg-white/90 p-4 shadow-lg shadow-slate-900/5 ring-1 ring-slate-100">
       <h2 className="mb-3 flex items-center gap-2 font-semibold text-slate-700">
-        <span className="text-base">🕘</span> This session
+        <ClockIcon className="h-4 w-4 text-emerald-600" /> This session
       </h2>
       {entries.length === 0 ? (
         <p className="text-sm leading-relaxed text-slate-400">

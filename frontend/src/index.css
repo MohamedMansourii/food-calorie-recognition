@@ -21,3 +21,16 @@ body {
 .rise-in {
   animation: rise-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* consistent, accessible keyboard focus */
+:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button, [role="button"], a { cursor: pointer; }

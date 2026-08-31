@@ -1,6 +1,6 @@
 // Single-screen result (FR-08): food + confidence, big kcal number, macro
 // cards, portion control, alternatives on low confidence, manual correction.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AnalyzeResult, FoodSearchHit, Nutrition, Prediction } from "../api";
 import ConfidenceBadge from "./ConfidenceBadge";
 import CorrectionSearch from "./CorrectionSearch";
@@ -15,6 +15,31 @@ interface Props {
   onGramsChange: (g: number) => void;
   onPickFood: (labelOrHit: FoodSearchHit) => void;
   onReset: () => void;
+}
+
+/** Animates a number toward its target (350 ms ease-out); static when reduced motion is preferred. */
+function useCountUp(target: number): number {
+  const [shown, setShown] = useState(target);
+  const from = useRef(target);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(target);
+      return;
+    }
+    const start = performance.now();
+    const initial = from.current;
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / 350, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setShown(Math.round(initial + (target - initial) * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+      else from.current = target;
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target]);
+  return shown;
 }
 
 function scale(n: Nutrition, grams: number) {
@@ -35,6 +60,7 @@ export default function ResultView(props: Props) {
     result.predictions.find((p) => p.label === selectedLabel) ?? result.predictions[0];
   const manualPick = !result.predictions.some((p) => p.label === selectedLabel);
   const macros = nutrition ? scale(nutrition, grams) : null;
+  const kcalShown = useCountUp(macros?.kcal ?? 0);
 
   return (
     <div className="rise-in rounded-3xl bg-white p-5 shadow-lg shadow-slate-900/5 ring-1 ring-slate-100 sm:p-6">
@@ -108,8 +134,8 @@ export default function ResultView(props: Props) {
       {nutrition && macros && (
         <>
           <div className="mt-6 flex items-end gap-2.5">
-            <span className="bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent">
-              {macros.kcal}
+            <span className="bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent tabular-nums">
+              {kcalShown}
             </span>
             <span className="pb-2 text-lg font-medium text-slate-500">kcal · {grams} g portion</span>
           </div>

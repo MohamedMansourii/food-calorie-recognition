@@ -10,6 +10,7 @@ import {
   type Nutrition,
 } from "./api";
 import HistorySidebar, { type HistoryEntry } from "./components/HistorySidebar";
+import { BowlIcon, GithubIcon } from "./components/icons";
 import ResultView from "./components/ResultView";
 import UploadArea from "./components/UploadArea";
 
@@ -106,12 +107,16 @@ export default function App() {
       )}
       <div className="mx-auto max-w-5xl px-4 py-8 sm:py-10">
         <header className="mb-8 flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-2xl shadow-md shadow-emerald-500/25">
-            🍽️
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25">
+            <BowlIcon className="h-6 w-6" />
           </div>
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              AI Food &amp; Calories Recognition
+              AI Food &amp;{" "}
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Calories
+              </span>{" "}
+              Recognition
             </h1>
             <p className="mt-1 text-sm text-slate-500">
               One meal photo → food, calories and macros.{" "}
@@ -184,8 +189,22 @@ export default function App() {
           <HistorySidebar entries={history} />
         </div>
 
-        <footer className="mt-10 border-t border-slate-200/70 pt-4 text-center text-xs text-slate-400">
-          Astrolab Group internship demo · ViT (Food-101) + Tunisian MobileNetV3 · estimates, not medical advice
+        <footer className="mt-10 flex flex-col items-center gap-1.5 border-t border-slate-200/70 pt-5 text-center text-xs text-slate-400">
+          <p className="text-sm font-semibold text-slate-600">
+            Designed &amp; built by{" "}
+            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              Mohamed Mansouri
+            </span>
+          </p>
+          <a
+            href="https://github.com/MohamedMansourii/food-calorie-recognition"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 text-slate-400 transition-colors hover:text-emerald-600"
+          >
+            <GithubIcon className="h-3.5 w-3.5" /> View the source on GitHub
+          </a>
+          <p>© 2026 Mohamed Mansouri</p>
         </footer>
       </div>
     </div>

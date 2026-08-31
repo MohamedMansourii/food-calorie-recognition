@@ -2,6 +2,7 @@
 // UX pattern ported from Rishabh1925/foodvisionai (MIT), rebuilt without
 // its animation/theme dependencies and with client-side validation added.
 import { useRef, useState } from "react";
+import { CameraIcon } from "./icons";
 
 const MAX_SIZE_MB = 8;
 const ACCEPTED = ["image/png", "image/jpeg", "image/gif", "image/webp"];
@@ -50,8 +51,8 @@ export default function UploadArea({ onImageSelect, onError, disabled }: Props) 
         ${isDragging ? "scale-[1.01] border-emerald-500 bg-emerald-50/80 shadow-lg shadow-emerald-500/10" : "border-slate-300 bg-white/90 hover:border-emerald-400 hover:shadow-md"}
         ${disabled ? "pointer-events-none opacity-60" : ""}`}
     >
-      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 text-3xl shadow-inner transition-transform duration-300 group-hover:scale-110">
-        📷
+      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700 shadow-inner transition-transform duration-300 group-hover:scale-110">
+        <CameraIcon className="h-8 w-8" />
       </div>
       <p className="text-lg font-semibold text-slate-700">
         Drop a meal photo here, or <span className="text-emerald-600 underline decoration-emerald-300 underline-offset-2">browse</span>
