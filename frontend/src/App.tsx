@@ -104,13 +104,25 @@ export default function App() {
           Recognition service unreachable — check that the backend is running, then reload this page.
         </div>
       )}
-      <div className="mx-auto max-w-5xl px-4 py-8">
-        <header className="mb-6">
-          <h1 className="text-2xl font-bold text-slate-900">AI Food &amp; Calories Recognition</h1>
-          <p className="mt-1 text-sm text-slate-500">
-            Upload one meal photo → get the food, calories and macros.{" "}
-            <span className="font-medium">Estimates only — not medical or dietary advice.</span>
-          </p>
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:py-10">
+        <header className="mb-8 flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-2xl shadow-md shadow-emerald-500/25">
+            🍽️
+          </div>
+          <div>
+            <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+              AI Food &amp; Calories Recognition
+            </h1>
+            <p className="mt-1 text-sm text-slate-500">
+              One meal photo → food, calories and macros.{" "}
+              <span className="font-medium text-slate-600">Estimates only — not medical or dietary advice.</span>
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-medium">
+              <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">ViT · Food-101</span>
+              <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">🇹🇳 Tunisian model · 19 dishes</span>
+              <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">120 foods · FR/AR search</span>
+            </div>
+          </div>
         </header>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
@@ -118,33 +130,34 @@ export default function App() {
             {!file && <UploadArea onImageSelect={selectFile} onError={setError} disabled={busy} />}
 
             {file && previewUrl && !result && (
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
+              <div className="rise-in rounded-3xl bg-white p-4 shadow-lg shadow-slate-900/5 ring-1 ring-slate-100">
                 <img
                   src={previewUrl}
                   alt="Meal preview"
-                  className="max-h-96 w-full rounded-xl object-contain"
+                  className="max-h-96 w-full rounded-2xl object-contain"
                 />
-                <div className="mt-4 flex gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   <button
                     onClick={analyze}
                     disabled={busy || backendUp === false}
-                    className="rounded-lg bg-emerald-600 px-5 py-2 font-medium text-white hover:bg-emerald-700 disabled:opacity-50"
+                    className="rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-2.5 font-semibold text-white shadow-md shadow-emerald-600/25 transition-all hover:shadow-lg hover:shadow-emerald-600/30 hover:brightness-105 disabled:opacity-50 disabled:shadow-none"
                   >
-                    {busy ? "Analyzing…" : "Analyze"}
+                    {busy ? "Analyzing…" : "Analyze photo"}
                   </button>
                   <button
                     onClick={reset}
                     disabled={busy}
-                    className="rounded-lg border border-slate-300 px-4 py-2 hover:bg-slate-50 disabled:opacity-50"
+                    className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 font-medium text-slate-600 transition-colors hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50"
                   >
                     Replace photo
                   </button>
+                  {busy && (
+                    <span className="flex items-center gap-2 text-sm text-slate-500">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-emerald-500 border-t-transparent" />
+                      Running both recognition models…
+                    </span>
+                  )}
                 </div>
-                {busy && (
-                  <p className="mt-3 animate-pulse text-sm text-slate-500">
-                    Running the recognition model…
-                  </p>
-                )}
               </div>
             )}
 
@@ -170,6 +183,10 @@ export default function App() {
 
           <HistorySidebar entries={history} />
         </div>
+
+        <footer className="mt-10 border-t border-slate-200/70 pt-4 text-center text-xs text-slate-400">
+          Astrolab Group internship demo · ViT (Food-101) + Tunisian MobileNetV3 · estimates, not medical advice
+        </footer>
       </div>
     </div>
   );

@@ -23,10 +23,10 @@ export default function PortionControl({ nutrition, grams, onChange }: Props) {
           <button
             key={p.key}
             onClick={() => onChange(p.g)}
-            className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
+            className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all ${
               grams === p.g
-                ? "border-emerald-600 bg-emerald-600 text-white"
-                : "border-slate-300 bg-white text-slate-700 hover:border-emerald-400"
+                ? "border-emerald-600 bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/25"
+                : "border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:text-emerald-700"
             }`}
           >
             {p.label} · {p.g} g

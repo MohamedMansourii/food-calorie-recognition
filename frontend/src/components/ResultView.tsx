@@ -37,10 +37,10 @@ export default function ResultView(props: Props) {
   const macros = nutrition ? scale(nutrition, grams) : null;
 
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-sm">
+    <div className="rise-in rounded-3xl bg-white p-5 shadow-lg shadow-slate-900/5 ring-1 ring-slate-100 sm:p-6">
       {/* header row: thumbnail + identification */}
       <div className="flex items-start gap-4">
-        <img src={imageUrl} alt="Analyzed meal" className="h-24 w-24 shrink-0 rounded-xl object-cover" />
+        <img src={imageUrl} alt="Analyzed meal" className="h-24 w-24 shrink-0 rounded-2xl object-cover shadow-md ring-2 ring-white" />
         <div className="min-w-0 flex-1">
           {result.status === "no_food" && !nutrition ? (
             <>
@@ -107,17 +107,20 @@ export default function ResultView(props: Props) {
       {/* nutrition (FR-06) */}
       {nutrition && macros && (
         <>
-          <div className="mt-5 flex items-end gap-2">
-            <span className="text-5xl font-extrabold tracking-tight text-slate-900">{macros.kcal}</span>
-            <span className="pb-1.5 text-lg font-medium text-slate-500">kcal · {grams} g portion</span>
+          <div className="mt-6 flex items-end gap-2.5">
+            <span className="bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent">
+              {macros.kcal}
+            </span>
+            <span className="pb-2 text-lg font-medium text-slate-500">kcal · {grams} g portion</span>
           </div>
           <div className="mt-4 grid grid-cols-3 gap-3">
             {[
-              { name: "Protein", value: macros.protein_g, tone: "bg-sky-50 text-sky-900" },
-              { name: "Carbs", value: macros.carbs_g, tone: "bg-orange-50 text-orange-900" },
-              { name: "Fat", value: macros.fat_g, tone: "bg-violet-50 text-violet-900" },
+              { name: "Protein", value: macros.protein_g, tone: "bg-sky-50 text-sky-900 ring-sky-100", bar: "bg-sky-400" },
+              { name: "Carbs", value: macros.carbs_g, tone: "bg-orange-50 text-orange-900 ring-orange-100", bar: "bg-orange-400" },
+              { name: "Fat", value: macros.fat_g, tone: "bg-violet-50 text-violet-900 ring-violet-100", bar: "bg-violet-400" },
             ].map((m) => (
-              <div key={m.name} className={`rounded-xl p-3 text-center ${m.tone}`}>
+              <div key={m.name} className={`rounded-2xl p-3.5 text-center ring-1 transition-transform hover:-translate-y-0.5 ${m.tone}`}>
+                <div className={`mx-auto mb-2 h-1 w-8 rounded-full ${m.bar}`} />
                 <p className="text-2xl font-bold">{m.value} g</p>
                 <p className="text-xs font-medium opacity-70">{m.name}</p>
               </div>
