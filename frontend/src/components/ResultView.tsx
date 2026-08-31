@@ -62,6 +62,11 @@ export default function ResultView(props: Props) {
                 ) : (
                   chosen && <ConfidenceBadge confidence={chosen.confidence} />
                 )}
+                {!manualPick && chosen?.source === "tunisian" && (
+                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-semibold text-red-800">
+                    🇹🇳 Tunisian model
+                  </span>
+                )}
                 <span className="text-xs text-slate-400">analyzed in {Math.round(result.latency_ms)} ms</span>
               </div>
             </>

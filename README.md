@@ -76,6 +76,8 @@ First analyze call downloads the model (~350 MB) into the Hugging Face cache; af
 | Mean latency (CPU) | 1082 ms |
 
 Measured on 100 held-out Food-101 test images (20 common classes × 5) on the dev laptop — consistent with the model's published ~89% over the full test set.
+
+**Tunisian engine** (second model, [mansourismatic/tunisian-food-classifier](https://huggingface.co/mansourismatic/tunisian-food-classifier)): MobileNetV3-Small fine-tuned on three public CC-BY-4.0 Roboflow datasets — **val top-1 86.7%, top-3 96.0%** over 19 dishes (2,381 held-out samples). Full details: [docs/tunisian-model-report.md](docs/tunisian-model-report.md). Predictions from this engine carry a 🇹🇳 tag in the UI; merge policy in `backend/tunisian.py`.
 <!-- ACCURACY:END -->
 
 Full tables: [docs/accuracy-report.md](docs/accuracy-report.md).
@@ -106,7 +108,7 @@ One container serves everything (frontend + model baked in) — for any Docker h
 ## Limitations (honest list)
 
 - **Single dominant item only** — a full plate returns its most confident single dish (multi-item detection is listed as future work).
-- **101 dishes** — the Food-101 vocabulary; anything else lands in "no confident match" + manual search.
+- **101 + 19 recognizable dishes** (Food-101 ViT + own Tunisian MobileNetV3: couscous, brik, ojja, mloukhiya, lablabi, kafteji, merguez, chorba, kamounia…) and **20 Tunisian foods** (couscous, marga, loubia, mloukhiya, ojja, lablabi, brik, kafteji, tajine tunisien, chorba, méchouia, chakchouka, merguez, fricassé, makroudh, bambalouni) searchable in Latin or Arabic script (e.g. كسكسي); anything neither model knows lands in "no confident match" + manual search.
 - **HEIC/HEIF unsupported** — iPhone photos must be JPG/PNG/WebP/GIF (≤ 8 MB).
 - **Nutrition values are per-100g averages** generated for the demo and flagged `needs_review` until manually checked against USDA ([docs/nutrition-review.md](docs/nutrition-review.md)); portions are user-adjusted assumptions, not measured from the image.
 - In-session history only; refresh clears it (by design — no accounts, no stored data).

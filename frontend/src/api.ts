@@ -9,6 +9,7 @@ export interface Prediction {
   label: string;
   display_name: string;
   confidence: number; // 0..1
+  source?: "food101" | "tunisian";
 }
 
 export interface Macros {

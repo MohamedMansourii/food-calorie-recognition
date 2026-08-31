@@ -37,7 +37,7 @@ export default function CorrectionSearch({ onSelect, onClose }: Props) {
           ref={inputRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search a food (e.g. burger, sushi)…"
+          placeholder="Search a food (e.g. couscous, ojja, burger)…"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
           aria-label="Search for the correct food"
         />

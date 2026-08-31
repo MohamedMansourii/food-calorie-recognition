@@ -33,3 +33,26 @@ The 25 most common classes (fried_chicken is not a Food-101 class; fried_rice li
 ## How to verify
 
 Look up each dish on fdc.nal.usda.gov (FoodData Central), search for the prepared dish name, and compare the per-100g macronutrient values against what is listed here. When values match (within ±5%), set "needs_review": false for that entry in nutrition_table.json. Focus first on the highest-impact items: pizza, fried foods, and desserts are common sources of error. Complete the spot-check on 25 items to establish confidence, then extend to the full 101 as time permits.
+
+## Tunisian additions (2026-08-30) — please verify these yourself
+
+Added on request: 16 Tunisian dishes, selectable via the "Wrong food?" search (the vision model itself only knows the 101 Food-101 classes). Values are per-100g estimates for typical home preparations — **you know these dishes better than any database; correct them from experience or a Tunisian nutrition reference.**
+
+| Food | kcal/100g | Protein g | Carbs g | Fat g | Default portion g |
+|---|---|---|---|---|---|
+| Couscous | 145 | 6.5 | 18 | 5.5 | 400 |
+| Marga | 95 | 6.0 | 7 | 4.5 | 300 |
+| Loubia | 110 | 6.5 | 13 | 3.5 | 300 |
+| Mloukhiya | 160 | 8.0 | 6 | 12.0 | 250 |
+| Ojja | 125 | 7.5 | 5 | 8.5 | 300 |
+| Lablabi | 115 | 6.0 | 15 | 3.5 | 400 |
+| Brik | 260 | 10.0 | 22 | 15.0 | 120 |
+| Kafteji | 155 | 5.0 | 12 | 10.0 | 300 |
+| Tajine Tunisien | 185 | 12.0 | 6 | 13.0 | 200 |
+| Chorba | 60 | 4.0 | 7 | 1.8 | 350 |
+| Salade Méchouia | 105 | 4.0 | 6 | 7.5 | 200 |
+| Chakchouka | 100 | 5.5 | 6.5 | 6.0 | 300 |
+| Merguez | 280 | 15.0 | 3 | 23.0 | 100 |
+| Fricassé | 300 | 10.0 | 28 | 17.0 | 130 |
+| Makroudh | 400 | 5.0 | 62 | 15.0 | 60 |
+| Bambalouni | 330 | 6.0 | 48 | 12.5 | 90 |

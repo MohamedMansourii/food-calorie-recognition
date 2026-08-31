@@ -32,11 +32,15 @@ def test_analyze_full_contract(client, food_image):
     assert body["status"] in {"ok", "low_confidence", "no_food"}
     assert len(body["predictions"]) == 3
     for p in body["predictions"]:
-        assert set(p) == {"label", "display_name", "confidence"}
+        assert {"label", "display_name", "confidence"} <= set(p)
+        assert set(p) <= {"label", "display_name", "confidence", "source"}
         assert 0.0 <= p["confidence"] <= 1.0
-    # best-first ordering
-    confs = [p["confidence"] for p in body["predictions"]]
-    assert confs == sorted(confs, reverse=True)
+    # best-first ordering within each engine (merged lists may interleave)
+    by_source = {}
+    for p in body["predictions"]:
+        by_source.setdefault(p.get("source", "food101"), []).append(p["confidence"])
+    for confs in by_source.values():
+        assert confs == sorted(confs, reverse=True)
 
     assert body["latency_ms"] > 0
     assert "not medical" in body["disclaimer"]
@@ -145,3 +149,48 @@ def test_food_nutrition_unknown_404(client):
     res = client.get("/api/foods/unicorn_steak")
     assert res.status_code == 404
     assert "error" in res.get_json()
+
+
+# --- Tunisian foods (search/nutrition-only additions, not model classes) ---
+
+def test_tunisian_alias_search(client):
+    """'ejja' (the common spelling) must find Ojja via aliases."""
+    labels = [r["label"] for r in client.get("/api/foods?q=ejja").get_json()["results"]]
+    assert "ojja" in labels
+
+
+def test_tunisian_arabic_search(client):
+    labels = [r["label"] for r in client.get("/api/foods?q=ملوخية").get_json()["results"]]
+    assert "mloukhiya" in labels
+
+
+def test_merge_policy_units():
+    """Engine-merge rules (no models needed)."""
+    import tunisian
+
+    vit_hi = [{"label": "pizza", "confidence": 0.95}, {"label": "lasagna", "confidence": 0.02},
+              {"label": "ravioli", "confidence": 0.01}]
+    vit_lo = [{"label": "risotto", "confidence": 0.30}, {"label": "paella", "confidence": 0.2},
+              {"label": "fried_rice", "confidence": 0.1}]
+    tun_hi = [{"label": "couscous", "confidence": 0.9, "source": "tunisian"}]
+    tun_mid = [{"label": "couscous", "confidence": 0.6, "source": "tunisian"}]
+
+    # no tunisian candidates -> vit untouched
+    assert [p["label"] for p in tunisian.merge(list(vit_hi), [])][0] == "pizza"
+    # very confident tunisian beats even a confident vit
+    assert tunisian.merge(list(vit_hi), list(tun_hi))[0]["label"] == "couscous"
+    # mid-confidence tunisian leads only when vit is unsure
+    assert tunisian.merge(list(vit_hi), list(tun_mid))[0]["label"] == "pizza"
+    assert tunisian.merge(list(vit_lo), list(tun_mid))[0]["label"] == "couscous"
+    # always top-3, deduped
+    merged = tunisian.merge(list(vit_lo), list(tun_mid))
+    assert len(merged) == 3 and len({p["label"] for p in merged}) == 3
+
+
+def test_tunisian_nutrition_block(client):
+    n = client.get("/api/foods/couscous").get_json()
+    assert n["food"] == "couscous"
+    assert n["needs_review"] is True
+    assert n["portions"]["small_g"] == round(n["default_portion_g"] * 0.7)
+    for slug in ("marga", "loubia", "mloukhiya", "ojja", "brik", "lablabi"):
+        assert client.get(f"/api/foods/{slug}").status_code == 200

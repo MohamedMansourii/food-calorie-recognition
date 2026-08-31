@@ -9,6 +9,7 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
 import nutrition
+import tunisian
 from config import Config
 from model import get_model
 
@@ -48,6 +49,9 @@ def analyze():
         predictions, latency_ms = get_model().predict(image_bytes, top_k=3)
     except Exception:
         return jsonify({"error": "Could not read that file as an image."}), 415
+
+    # Second engine: Tunisian dishes (no-op when the model isn't present).
+    predictions = tunisian.merge(predictions, tunisian.candidates(image_bytes))
 
     return jsonify(_build_result(predictions, latency_ms))
 

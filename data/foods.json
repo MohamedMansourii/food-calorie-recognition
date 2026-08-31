@@ -1,103 +1,1082 @@
 [
-  {"label": "apple_pie", "display_name": "Apple Pie", "aliases": ["pie", "baked dessert", "fruit pie"]},
-  {"label": "baby_back_ribs", "display_name": "Baby Back Ribs", "aliases": ["ribs", "bbq ribs", "pork ribs"]},
-  {"label": "baklava", "display_name": "Baklava", "aliases": ["pastry", "middle eastern", "honey pastry"]},
-  {"label": "beef_carpaccio", "display_name": "Beef Carpaccio", "aliases": ["raw beef", "italian appetizer", "sliced beef"]},
-  {"label": "beef_tartare", "display_name": "Beef Tartare", "aliases": ["raw beef", "french dish", "minced beef"]},
-  {"label": "beet_salad", "display_name": "Beet Salad", "aliases": ["salad", "vegetables", "beets"]},
-  {"label": "beignets", "display_name": "Beignets", "aliases": ["fried pastry", "new orleans", "sweet"]},
-  {"label": "bibimbap", "display_name": "Bibimbap", "aliases": ["korean", "rice bowl", "vegetable rice"]},
-  {"label": "bread_pudding", "display_name": "Bread Pudding", "aliases": ["pudding", "dessert", "bread dessert"]},
-  {"label": "breakfast_burrito", "display_name": "Breakfast Burrito", "aliases": ["burrito", "morning", "mexican"]},
-  {"label": "bruschetta", "display_name": "Bruschetta", "aliases": ["italian appetizer", "toasted bread", "tomato bread"]},
-  {"label": "caesar_salad", "display_name": "Caesar Salad", "aliases": ["salad", "greens", "lettuce"]},
-  {"label": "cannoli", "display_name": "Cannoli", "aliases": ["italian dessert", "pastry", "fried pastry"]},
-  {"label": "caprese_salad", "display_name": "Caprese Salad", "aliases": ["salad", "italian salad", "tomato mozzarella"]},
-  {"label": "carrot_cake", "display_name": "Carrot Cake", "aliases": ["cake", "dessert", "vegetable cake"]},
-  {"label": "ceviche", "display_name": "Ceviche", "aliases": ["seafood", "peruvian", "fish dish"]},
-  {"label": "cheese_plate", "display_name": "Cheese Plate", "aliases": ["cheese", "dairy", "appetizer"]},
-  {"label": "cheesecake", "display_name": "Cheesecake", "aliases": ["cake", "dessert", "creamy dessert"]},
-  {"label": "chicken_curry", "display_name": "Chicken Curry", "aliases": ["curry", "indian", "spiced chicken"]},
-  {"label": "chicken_quesadilla", "display_name": "Chicken Quesadilla", "aliases": ["quesadilla", "mexican", "cheese tortilla"]},
-  {"label": "chicken_wings", "display_name": "Chicken Wings", "aliases": ["wings", "fried chicken", "poultry"]},
-  {"label": "chocolate_cake", "display_name": "Chocolate Cake", "aliases": ["cake", "dessert", "chocolate dessert"]},
-  {"label": "chocolate_mousse", "display_name": "Chocolate Mousse", "aliases": ["mousse", "dessert", "chocolate dessert"]},
-  {"label": "churros", "display_name": "Churros", "aliases": ["fried pastry", "spanish", "sweet fried"]},
-  {"label": "clam_chowder", "display_name": "Clam Chowder", "aliases": ["soup", "seafood soup", "creamy soup"]},
-  {"label": "club_sandwich", "display_name": "Club Sandwich", "aliases": ["sandwich", "bread", "lunch"]},
-  {"label": "crab_cakes", "display_name": "Crab Cakes", "aliases": ["seafood", "cakes", "fried seafood"]},
-  {"label": "creme_brulee", "display_name": "Creme Brulee", "aliases": ["dessert", "french dessert", "custard"]},
-  {"label": "croque_madame", "display_name": "Croque Madame", "aliases": ["sandwich", "french", "ham cheese"]},
-  {"label": "cup_cakes", "display_name": "Cup Cakes", "aliases": ["cake", "dessert", "small cake"]},
-  {"label": "deviled_eggs", "display_name": "Deviled Eggs", "aliases": ["eggs", "appetizer", "hard boiled"]},
-  {"label": "donuts", "display_name": "Donuts", "aliases": ["fried pastry", "breakfast", "sweet"]},
-  {"label": "dumplings", "display_name": "Dumplings", "aliases": ["asian", "pockets", "steamed"]},
-  {"label": "edamame", "display_name": "Edamame", "aliases": ["soybeans", "green beans", "appetizer"]},
-  {"label": "eggs_benedict", "display_name": "Eggs Benedict", "aliases": ["eggs", "breakfast", "poached eggs"]},
-  {"label": "escargots", "display_name": "Escargots", "aliases": ["snails", "french", "seafood"]},
-  {"label": "falafel", "display_name": "Falafel", "aliases": ["middle eastern", "fried", "chickpea"]},
-  {"label": "filet_mignon", "display_name": "Filet Mignon", "aliases": ["steak", "beef", "meat"]},
-  {"label": "fish_and_chips", "display_name": "Fish And Chips", "aliases": ["fried fish", "seafood", "british"]},
-  {"label": "foie_gras", "display_name": "Foie Gras", "aliases": ["duck liver", "french", "pate"]},
-  {"label": "french_fries", "display_name": "French Fries", "aliases": ["fries", "chips", "fried potatoes"]},
-  {"label": "french_onion_soup", "display_name": "French Onion Soup", "aliases": ["soup", "onion soup", "french"]},
-  {"label": "french_toast", "display_name": "French Toast", "aliases": ["toast", "breakfast", "bread"]},
-  {"label": "fried_calamari", "display_name": "Fried Calamari", "aliases": ["squid", "fried seafood", "appetizer"]},
-  {"label": "fried_rice", "display_name": "Fried Rice", "aliases": ["rice", "asian", "stir fried"]},
-  {"label": "frozen_yogurt", "display_name": "Frozen Yogurt", "aliases": ["yogurt", "frozen", "dessert"]},
-  {"label": "garlic_bread", "display_name": "Garlic Bread", "aliases": ["bread", "garlic", "appetizer"]},
-  {"label": "gnocchi", "display_name": "Gnocchi", "aliases": ["pasta", "italian", "dumplings"]},
-  {"label": "greek_salad", "display_name": "Greek Salad", "aliases": ["salad", "vegetables", "mediterranean"]},
-  {"label": "grilled_cheese_sandwich", "display_name": "Grilled Cheese Sandwich", "aliases": ["sandwich", "cheese", "toasted"]},
-  {"label": "grilled_salmon", "display_name": "Grilled Salmon", "aliases": ["salmon", "fish", "seafood"]},
-  {"label": "guacamole", "display_name": "Guacamole", "aliases": ["avocado", "dip", "mexican"]},
-  {"label": "gyoza", "display_name": "Gyoza", "aliases": ["dumplings", "asian", "japanese"]},
-  {"label": "hamburger", "display_name": "Hamburger", "aliases": ["burger", "beef burger", "sandwich"]},
-  {"label": "hot_and_sour_soup", "display_name": "Hot And Sour Soup", "aliases": ["soup", "asian soup", "chinese"]},
-  {"label": "hot_dog", "display_name": "Hot Dog", "aliases": ["sausage", "sandwich", "meat"]},
-  {"label": "huevos_rancheros", "display_name": "Huevos Rancheros", "aliases": ["eggs", "mexican", "breakfast"]},
-  {"label": "hummus", "display_name": "Hummus", "aliases": ["dip", "middle eastern", "chickpea"]},
-  {"label": "ice_cream", "display_name": "Ice Cream", "aliases": ["frozen", "dessert", "sweet"]},
-  {"label": "lasagna", "display_name": "Lasagna", "aliases": ["pasta", "italian", "layered"]},
-  {"label": "lobster_bisque", "display_name": "Lobster Bisque", "aliases": ["soup", "seafood soup", "creamy"]},
-  {"label": "lobster_roll_sandwich", "display_name": "Lobster Roll Sandwich", "aliases": ["sandwich", "seafood", "lobster"]},
-  {"label": "macaroni_and_cheese", "display_name": "Macaroni And Cheese", "aliases": ["mac and cheese", "pasta", "cheese"]},
-  {"label": "macarons", "display_name": "Macarons", "aliases": ["french cookie", "pastry", "almond"]},
-  {"label": "miso_soup", "display_name": "Miso Soup", "aliases": ["soup", "japanese", "asian soup"]},
-  {"label": "mussels", "display_name": "Mussels", "aliases": ["seafood", "shellfish", "mollusks"]},
-  {"label": "nachos", "display_name": "Nachos", "aliases": ["mexican", "appetizer", "cheese chips"]},
-  {"label": "omelette", "display_name": "Omelette", "aliases": ["eggs", "breakfast", "egg dish"]},
-  {"label": "onion_rings", "display_name": "Onion Rings", "aliases": ["fried onions", "appetizer", "fried"]},
-  {"label": "oysters", "display_name": "Oysters", "aliases": ["seafood", "shellfish", "mollusks"]},
-  {"label": "pad_thai", "display_name": "Pad Thai", "aliases": ["thai", "noodles", "asian"]},
-  {"label": "paella", "display_name": "Paella", "aliases": ["spanish", "rice", "seafood rice"]},
-  {"label": "pancakes", "display_name": "Pancakes", "aliases": ["breakfast", "flat cakes", "sweet"]},
-  {"label": "panna_cotta", "display_name": "Panna Cotta", "aliases": ["dessert", "italian dessert", "custard"]},
-  {"label": "peking_duck", "display_name": "Peking Duck", "aliases": ["duck", "chinese", "roasted"]},
-  {"label": "pho", "display_name": "Pho", "aliases": ["vietnamese soup", "noodle soup", "asian"]},
-  {"label": "pizza", "display_name": "Pizza", "aliases": ["italian", "bread cheese", "oven baked"]},
-  {"label": "pork_chop", "display_name": "Pork Chop", "aliases": ["pork", "meat", "grilled"]},
-  {"label": "poutine", "display_name": "Poutine", "aliases": ["fries gravy", "canadian", "fried potatoes"]},
-  {"label": "prime_rib", "display_name": "Prime Rib", "aliases": ["steak", "beef", "roasted"]},
-  {"label": "pulled_pork_sandwich", "display_name": "Pulled Pork Sandwich", "aliases": ["sandwich", "pork", "bbq"]},
-  {"label": "ramen", "display_name": "Ramen", "aliases": ["noodles", "japanese", "asian soup"]},
-  {"label": "ravioli", "display_name": "Ravioli", "aliases": ["pasta", "italian", "filled pasta"]},
-  {"label": "red_velvet_cake", "display_name": "Red Velvet Cake", "aliases": ["cake", "dessert", "red cake"]},
-  {"label": "risotto", "display_name": "Risotto", "aliases": ["rice", "italian rice", "creamy"]},
-  {"label": "samosa", "display_name": "Samosa", "aliases": ["fried pastry", "indian", "appetizer"]},
-  {"label": "sashimi", "display_name": "Sashimi", "aliases": ["raw fish", "japanese", "seafood"]},
-  {"label": "scallops", "display_name": "Scallops", "aliases": ["seafood", "shellfish", "mollusks"]},
-  {"label": "seaweed_salad", "display_name": "Seaweed Salad", "aliases": ["salad", "japanese", "seaweed"]},
-  {"label": "shrimp_and_grits", "display_name": "Shrimp And Grits", "aliases": ["shrimp", "southern", "seafood"]},
-  {"label": "spaghetti_bolognese", "display_name": "Spaghetti Bolognese", "aliases": ["pasta", "italian", "meat sauce"]},
-  {"label": "spaghetti_carbonara", "display_name": "Spaghetti Carbonara", "aliases": ["pasta", "italian", "cheese pasta"]},
-  {"label": "spring_rolls", "display_name": "Spring Rolls", "aliases": ["rolls", "asian", "fried pastry"]},
-  {"label": "steak", "display_name": "Steak", "aliases": ["beef", "grilled meat", "meat"]},
-  {"label": "strawberry_shortcake", "display_name": "Strawberry Shortcake", "aliases": ["cake", "dessert", "fruit cake"]},
-  {"label": "sushi", "display_name": "Sushi", "aliases": ["japanese", "rice rolls", "seafood"]},
-  {"label": "tacos", "display_name": "Tacos", "aliases": ["mexican", "tortilla", "meat"]},
-  {"label": "takoyaki", "display_name": "Takoyaki", "aliases": ["octopus balls", "japanese", "fried"]},
-  {"label": "tiramisu", "display_name": "Tiramisu", "aliases": ["italian dessert", "cake", "coffee dessert"]},
-  {"label": "tuna_tartare", "display_name": "Tuna Tartare", "aliases": ["raw fish", "japanese", "seafood"]},
-  {"label": "waffles", "display_name": "Waffles", "aliases": ["breakfast", "grid cake", "sweet"]}
+ {
+  "label": "apple_pie",
+  "display_name": "Apple Pie",
+  "aliases": [
+   "pie",
+   "baked dessert",
+   "fruit pie"
+  ]
+ },
+ {
+  "label": "baby_back_ribs",
+  "display_name": "Baby Back Ribs",
+  "aliases": [
+   "ribs",
+   "bbq ribs",
+   "pork ribs"
+  ]
+ },
+ {
+  "label": "baklava",
+  "display_name": "Baklava",
+  "aliases": [
+   "pastry",
+   "middle eastern",
+   "honey pastry"
+  ]
+ },
+ {
+  "label": "beef_carpaccio",
+  "display_name": "Beef Carpaccio",
+  "aliases": [
+   "raw beef",
+   "italian appetizer",
+   "sliced beef"
+  ]
+ },
+ {
+  "label": "beef_tartare",
+  "display_name": "Beef Tartare",
+  "aliases": [
+   "raw beef",
+   "french dish",
+   "minced beef"
+  ]
+ },
+ {
+  "label": "beet_salad",
+  "display_name": "Beet Salad",
+  "aliases": [
+   "salad",
+   "vegetables",
+   "beets"
+  ]
+ },
+ {
+  "label": "beignets",
+  "display_name": "Beignets",
+  "aliases": [
+   "fried pastry",
+   "new orleans",
+   "sweet"
+  ]
+ },
+ {
+  "label": "bibimbap",
+  "display_name": "Bibimbap",
+  "aliases": [
+   "korean",
+   "rice bowl",
+   "vegetable rice"
+  ]
+ },
+ {
+  "label": "bread_pudding",
+  "display_name": "Bread Pudding",
+  "aliases": [
+   "pudding",
+   "dessert",
+   "bread dessert"
+  ]
+ },
+ {
+  "label": "breakfast_burrito",
+  "display_name": "Breakfast Burrito",
+  "aliases": [
+   "burrito",
+   "morning",
+   "mexican"
+  ]
+ },
+ {
+  "label": "bruschetta",
+  "display_name": "Bruschetta",
+  "aliases": [
+   "italian appetizer",
+   "toasted bread",
+   "tomato bread"
+  ]
+ },
+ {
+  "label": "caesar_salad",
+  "display_name": "Caesar Salad",
+  "aliases": [
+   "salad",
+   "greens",
+   "lettuce"
+  ]
+ },
+ {
+  "label": "cannoli",
+  "display_name": "Cannoli",
+  "aliases": [
+   "italian dessert",
+   "pastry",
+   "fried pastry"
+  ]
+ },
+ {
+  "label": "caprese_salad",
+  "display_name": "Caprese Salad",
+  "aliases": [
+   "salad",
+   "italian salad",
+   "tomato mozzarella"
+  ]
+ },
+ {
+  "label": "carrot_cake",
+  "display_name": "Carrot Cake",
+  "aliases": [
+   "cake",
+   "dessert",
+   "vegetable cake"
+  ]
+ },
+ {
+  "label": "ceviche",
+  "display_name": "Ceviche",
+  "aliases": [
+   "seafood",
+   "peruvian",
+   "fish dish"
+  ]
+ },
+ {
+  "label": "cheese_plate",
+  "display_name": "Cheese Plate",
+  "aliases": [
+   "cheese",
+   "dairy",
+   "appetizer"
+  ]
+ },
+ {
+  "label": "cheesecake",
+  "display_name": "Cheesecake",
+  "aliases": [
+   "cake",
+   "dessert",
+   "creamy dessert"
+  ]
+ },
+ {
+  "label": "chicken_curry",
+  "display_name": "Chicken Curry",
+  "aliases": [
+   "curry",
+   "indian",
+   "spiced chicken"
+  ]
+ },
+ {
+  "label": "chicken_quesadilla",
+  "display_name": "Chicken Quesadilla",
+  "aliases": [
+   "quesadilla",
+   "mexican",
+   "cheese tortilla"
+  ]
+ },
+ {
+  "label": "chicken_wings",
+  "display_name": "Chicken Wings",
+  "aliases": [
+   "wings",
+   "fried chicken",
+   "poultry"
+  ]
+ },
+ {
+  "label": "chocolate_cake",
+  "display_name": "Chocolate Cake",
+  "aliases": [
+   "cake",
+   "dessert",
+   "chocolate dessert"
+  ]
+ },
+ {
+  "label": "chocolate_mousse",
+  "display_name": "Chocolate Mousse",
+  "aliases": [
+   "mousse",
+   "dessert",
+   "chocolate dessert"
+  ]
+ },
+ {
+  "label": "churros",
+  "display_name": "Churros",
+  "aliases": [
+   "fried pastry",
+   "spanish",
+   "sweet fried"
+  ]
+ },
+ {
+  "label": "clam_chowder",
+  "display_name": "Clam Chowder",
+  "aliases": [
+   "soup",
+   "seafood soup",
+   "creamy soup"
+  ]
+ },
+ {
+  "label": "club_sandwich",
+  "display_name": "Club Sandwich",
+  "aliases": [
+   "sandwich",
+   "bread",
+   "lunch"
+  ]
+ },
+ {
+  "label": "crab_cakes",
+  "display_name": "Crab Cakes",
+  "aliases": [
+   "seafood",
+   "cakes",
+   "fried seafood"
+  ]
+ },
+ {
+  "label": "creme_brulee",
+  "display_name": "Creme Brulee",
+  "aliases": [
+   "dessert",
+   "french dessert",
+   "custard"
+  ]
+ },
+ {
+  "label": "croque_madame",
+  "display_name": "Croque Madame",
+  "aliases": [
+   "sandwich",
+   "french",
+   "ham cheese"
+  ]
+ },
+ {
+  "label": "cup_cakes",
+  "display_name": "Cup Cakes",
+  "aliases": [
+   "cake",
+   "dessert",
+   "small cake"
+  ]
+ },
+ {
+  "label": "deviled_eggs",
+  "display_name": "Deviled Eggs",
+  "aliases": [
+   "eggs",
+   "appetizer",
+   "hard boiled"
+  ]
+ },
+ {
+  "label": "donuts",
+  "display_name": "Donuts",
+  "aliases": [
+   "fried pastry",
+   "breakfast",
+   "sweet"
+  ]
+ },
+ {
+  "label": "dumplings",
+  "display_name": "Dumplings",
+  "aliases": [
+   "asian",
+   "pockets",
+   "steamed"
+  ]
+ },
+ {
+  "label": "edamame",
+  "display_name": "Edamame",
+  "aliases": [
+   "soybeans",
+   "green beans",
+   "appetizer"
+  ]
+ },
+ {
+  "label": "eggs_benedict",
+  "display_name": "Eggs Benedict",
+  "aliases": [
+   "eggs",
+   "breakfast",
+   "poached eggs"
+  ]
+ },
+ {
+  "label": "escargots",
+  "display_name": "Escargots",
+  "aliases": [
+   "snails",
+   "french",
+   "seafood"
+  ]
+ },
+ {
+  "label": "falafel",
+  "display_name": "Falafel",
+  "aliases": [
+   "middle eastern",
+   "fried",
+   "chickpea"
+  ]
+ },
+ {
+  "label": "filet_mignon",
+  "display_name": "Filet Mignon",
+  "aliases": [
+   "steak",
+   "beef",
+   "meat"
+  ]
+ },
+ {
+  "label": "fish_and_chips",
+  "display_name": "Fish And Chips",
+  "aliases": [
+   "fried fish",
+   "seafood",
+   "british"
+  ]
+ },
+ {
+  "label": "foie_gras",
+  "display_name": "Foie Gras",
+  "aliases": [
+   "duck liver",
+   "french",
+   "pate"
+  ]
+ },
+ {
+  "label": "french_fries",
+  "display_name": "French Fries",
+  "aliases": [
+   "fries",
+   "chips",
+   "fried potatoes"
+  ]
+ },
+ {
+  "label": "french_onion_soup",
+  "display_name": "French Onion Soup",
+  "aliases": [
+   "soup",
+   "onion soup",
+   "french"
+  ]
+ },
+ {
+  "label": "french_toast",
+  "display_name": "French Toast",
+  "aliases": [
+   "toast",
+   "breakfast",
+   "bread"
+  ]
+ },
+ {
+  "label": "fried_calamari",
+  "display_name": "Fried Calamari",
+  "aliases": [
+   "squid",
+   "fried seafood",
+   "appetizer"
+  ]
+ },
+ {
+  "label": "fried_rice",
+  "display_name": "Fried Rice",
+  "aliases": [
+   "rice",
+   "asian",
+   "stir fried"
+  ]
+ },
+ {
+  "label": "frozen_yogurt",
+  "display_name": "Frozen Yogurt",
+  "aliases": [
+   "yogurt",
+   "frozen",
+   "dessert"
+  ]
+ },
+ {
+  "label": "garlic_bread",
+  "display_name": "Garlic Bread",
+  "aliases": [
+   "bread",
+   "garlic",
+   "appetizer"
+  ]
+ },
+ {
+  "label": "gnocchi",
+  "display_name": "Gnocchi",
+  "aliases": [
+   "pasta",
+   "italian",
+   "dumplings"
+  ]
+ },
+ {
+  "label": "greek_salad",
+  "display_name": "Greek Salad",
+  "aliases": [
+   "salad",
+   "vegetables",
+   "mediterranean"
+  ]
+ },
+ {
+  "label": "grilled_cheese_sandwich",
+  "display_name": "Grilled Cheese Sandwich",
+  "aliases": [
+   "sandwich",
+   "cheese",
+   "toasted"
+  ]
+ },
+ {
+  "label": "grilled_salmon",
+  "display_name": "Grilled Salmon",
+  "aliases": [
+   "salmon",
+   "fish",
+   "seafood"
+  ]
+ },
+ {
+  "label": "guacamole",
+  "display_name": "Guacamole",
+  "aliases": [
+   "avocado",
+   "dip",
+   "mexican"
+  ]
+ },
+ {
+  "label": "gyoza",
+  "display_name": "Gyoza",
+  "aliases": [
+   "dumplings",
+   "asian",
+   "japanese"
+  ]
+ },
+ {
+  "label": "hamburger",
+  "display_name": "Hamburger",
+  "aliases": [
+   "burger",
+   "beef burger",
+   "sandwich"
+  ]
+ },
+ {
+  "label": "hot_and_sour_soup",
+  "display_name": "Hot And Sour Soup",
+  "aliases": [
+   "soup",
+   "asian soup",
+   "chinese"
+  ]
+ },
+ {
+  "label": "hot_dog",
+  "display_name": "Hot Dog",
+  "aliases": [
+   "sausage",
+   "sandwich",
+   "meat"
+  ]
+ },
+ {
+  "label": "huevos_rancheros",
+  "display_name": "Huevos Rancheros",
+  "aliases": [
+   "eggs",
+   "mexican",
+   "breakfast"
+  ]
+ },
+ {
+  "label": "hummus",
+  "display_name": "Hummus",
+  "aliases": [
+   "dip",
+   "middle eastern",
+   "chickpea"
+  ]
+ },
+ {
+  "label": "ice_cream",
+  "display_name": "Ice Cream",
+  "aliases": [
+   "frozen",
+   "dessert",
+   "sweet"
+  ]
+ },
+ {
+  "label": "lasagna",
+  "display_name": "Lasagna",
+  "aliases": [
+   "pasta",
+   "italian",
+   "layered"
+  ]
+ },
+ {
+  "label": "lobster_bisque",
+  "display_name": "Lobster Bisque",
+  "aliases": [
+   "soup",
+   "seafood soup",
+   "creamy"
+  ]
+ },
+ {
+  "label": "lobster_roll_sandwich",
+  "display_name": "Lobster Roll Sandwich",
+  "aliases": [
+   "sandwich",
+   "seafood",
+   "lobster"
+  ]
+ },
+ {
+  "label": "macaroni_and_cheese",
+  "display_name": "Macaroni And Cheese",
+  "aliases": [
+   "mac and cheese",
+   "pasta",
+   "cheese"
+  ]
+ },
+ {
+  "label": "macarons",
+  "display_name": "Macarons",
+  "aliases": [
+   "french cookie",
+   "pastry",
+   "almond"
+  ]
+ },
+ {
+  "label": "miso_soup",
+  "display_name": "Miso Soup",
+  "aliases": [
+   "soup",
+   "japanese",
+   "asian soup"
+  ]
+ },
+ {
+  "label": "mussels",
+  "display_name": "Mussels",
+  "aliases": [
+   "seafood",
+   "shellfish",
+   "mollusks"
+  ]
+ },
+ {
+  "label": "nachos",
+  "display_name": "Nachos",
+  "aliases": [
+   "mexican",
+   "appetizer",
+   "cheese chips"
+  ]
+ },
+ {
+  "label": "omelette",
+  "display_name": "Omelette",
+  "aliases": [
+   "eggs",
+   "breakfast",
+   "egg dish"
+  ]
+ },
+ {
+  "label": "onion_rings",
+  "display_name": "Onion Rings",
+  "aliases": [
+   "fried onions",
+   "appetizer",
+   "fried"
+  ]
+ },
+ {
+  "label": "oysters",
+  "display_name": "Oysters",
+  "aliases": [
+   "seafood",
+   "shellfish",
+   "mollusks"
+  ]
+ },
+ {
+  "label": "pad_thai",
+  "display_name": "Pad Thai",
+  "aliases": [
+   "thai",
+   "noodles",
+   "asian"
+  ]
+ },
+ {
+  "label": "paella",
+  "display_name": "Paella",
+  "aliases": [
+   "spanish",
+   "rice",
+   "seafood rice"
+  ]
+ },
+ {
+  "label": "pancakes",
+  "display_name": "Pancakes",
+  "aliases": [
+   "breakfast",
+   "flat cakes",
+   "sweet"
+  ]
+ },
+ {
+  "label": "panna_cotta",
+  "display_name": "Panna Cotta",
+  "aliases": [
+   "dessert",
+   "italian dessert",
+   "custard"
+  ]
+ },
+ {
+  "label": "peking_duck",
+  "display_name": "Peking Duck",
+  "aliases": [
+   "duck",
+   "chinese",
+   "roasted"
+  ]
+ },
+ {
+  "label": "pho",
+  "display_name": "Pho",
+  "aliases": [
+   "vietnamese soup",
+   "noodle soup",
+   "asian"
+  ]
+ },
+ {
+  "label": "pizza",
+  "display_name": "Pizza",
+  "aliases": [
+   "italian",
+   "bread cheese",
+   "oven baked"
+  ]
+ },
+ {
+  "label": "pork_chop",
+  "display_name": "Pork Chop",
+  "aliases": [
+   "pork",
+   "meat",
+   "grilled"
+  ]
+ },
+ {
+  "label": "poutine",
+  "display_name": "Poutine",
+  "aliases": [
+   "fries gravy",
+   "canadian",
+   "fried potatoes"
+  ]
+ },
+ {
+  "label": "prime_rib",
+  "display_name": "Prime Rib",
+  "aliases": [
+   "steak",
+   "beef",
+   "roasted"
+  ]
+ },
+ {
+  "label": "pulled_pork_sandwich",
+  "display_name": "Pulled Pork Sandwich",
+  "aliases": [
+   "sandwich",
+   "pork",
+   "bbq"
+  ]
+ },
+ {
+  "label": "ramen",
+  "display_name": "Ramen",
+  "aliases": [
+   "noodles",
+   "japanese",
+   "asian soup"
+  ]
+ },
+ {
+  "label": "ravioli",
+  "display_name": "Ravioli",
+  "aliases": [
+   "pasta",
+   "italian",
+   "filled pasta"
+  ]
+ },
+ {
+  "label": "red_velvet_cake",
+  "display_name": "Red Velvet Cake",
+  "aliases": [
+   "cake",
+   "dessert",
+   "red cake"
+  ]
+ },
+ {
+  "label": "risotto",
+  "display_name": "Risotto",
+  "aliases": [
+   "rice",
+   "italian rice",
+   "creamy"
+  ]
+ },
+ {
+  "label": "samosa",
+  "display_name": "Samosa",
+  "aliases": [
+   "fried pastry",
+   "indian",
+   "appetizer"
+  ]
+ },
+ {
+  "label": "sashimi",
+  "display_name": "Sashimi",
+  "aliases": [
+   "raw fish",
+   "japanese",
+   "seafood"
+  ]
+ },
+ {
+  "label": "scallops",
+  "display_name": "Scallops",
+  "aliases": [
+   "seafood",
+   "shellfish",
+   "mollusks"
+  ]
+ },
+ {
+  "label": "seaweed_salad",
+  "display_name": "Seaweed Salad",
+  "aliases": [
+   "salad",
+   "japanese",
+   "seaweed"
+  ]
+ },
+ {
+  "label": "shrimp_and_grits",
+  "display_name": "Shrimp And Grits",
+  "aliases": [
+   "shrimp",
+   "southern",
+   "seafood"
+  ]
+ },
+ {
+  "label": "spaghetti_bolognese",
+  "display_name": "Spaghetti Bolognese",
+  "aliases": [
+   "pasta",
+   "italian",
+   "meat sauce"
+  ]
+ },
+ {
+  "label": "spaghetti_carbonara",
+  "display_name": "Spaghetti Carbonara",
+  "aliases": [
+   "pasta",
+   "italian",
+   "cheese pasta"
+  ]
+ },
+ {
+  "label": "spring_rolls",
+  "display_name": "Spring Rolls",
+  "aliases": [
+   "rolls",
+   "asian",
+   "fried pastry"
+  ]
+ },
+ {
+  "label": "steak",
+  "display_name": "Steak",
+  "aliases": [
+   "beef",
+   "grilled meat",
+   "meat"
+  ]
+ },
+ {
+  "label": "strawberry_shortcake",
+  "display_name": "Strawberry Shortcake",
+  "aliases": [
+   "cake",
+   "dessert",
+   "fruit cake"
+  ]
+ },
+ {
+  "label": "sushi",
+  "display_name": "Sushi",
+  "aliases": [
+   "japanese",
+   "rice rolls",
+   "seafood"
+  ]
+ },
+ {
+  "label": "tacos",
+  "display_name": "Tacos",
+  "aliases": [
+   "mexican",
+   "tortilla",
+   "meat"
+  ]
+ },
+ {
+  "label": "takoyaki",
+  "display_name": "Takoyaki",
+  "aliases": [
+   "octopus balls",
+   "japanese",
+   "fried"
+  ]
+ },
+ {
+  "label": "tiramisu",
+  "display_name": "Tiramisu",
+  "aliases": [
+   "italian dessert",
+   "cake",
+   "coffee dessert"
+  ]
+ },
+ {
+  "label": "tuna_tartare",
+  "display_name": "Tuna Tartare",
+  "aliases": [
+   "raw fish",
+   "japanese",
+   "seafood"
+  ]
+ },
+ {
+  "label": "waffles",
+  "display_name": "Waffles",
+  "aliases": [
+   "breakfast",
+   "grid cake",
+   "sweet"
+  ]
+ },
+ {
+  "label": "couscous",
+  "display_name": "Couscous",
+  "aliases": [
+   "kosksi",
+   "couscous tunisien",
+   "كسكسي"
+  ]
+ },
+ {
+  "label": "marga",
+  "display_name": "Marga (Tunisian Stew)",
+  "aliases": [
+   "marka",
+   "margua",
+   "مرقة"
+  ]
+ },
+ {
+  "label": "loubia",
+  "display_name": "Loubia (White Bean Stew)",
+  "aliases": [
+   "lubia",
+   "white beans",
+   "لوبيا"
+  ]
+ },
+ {
+  "label": "mloukhiya",
+  "display_name": "Mloukhiya",
+  "aliases": [
+   "mloukhia",
+   "molokhia",
+   "ملوخية"
+  ]
+ },
+ {
+  "label": "ojja",
+  "display_name": "Ojja",
+  "aliases": [
+   "ejja",
+   "ojja merguez",
+   "عجة"
+  ]
+ },
+ {
+  "label": "lablabi",
+  "display_name": "Lablabi",
+  "aliases": [
+   "leblebi",
+   "chickpea soup",
+   "لبلابي"
+  ]
+ },
+ {
+  "label": "brik",
+  "display_name": "Brik",
+  "aliases": [
+   "brick",
+   "brik a l'oeuf",
+   "بريك"
+  ]
+ },
+ {
+  "label": "kafteji",
+  "display_name": "Kafteji",
+  "aliases": [
+   "kaftaji",
+   "fried vegetables",
+   "كفتاجي"
+  ]
+ },
+ {
+  "label": "tajine_tunisien",
+  "display_name": "Tajine Tunisien",
+  "aliases": [
+   "tajine",
+   "tunisian frittata",
+   "طاجين"
+  ]
+ },
+ {
+  "label": "chorba",
+  "display_name": "Chorba",
+  "aliases": [
+   "shorba",
+   "chorba frik",
+   "شربة"
+  ]
+ },
+ {
+  "label": "salade_mechouia",
+  "display_name": "Salade Méchouia",
+  "aliases": [
+   "mechouia",
+   "grilled salad",
+   "سلاطة مشوية"
+  ]
+ },
+ {
+  "label": "chakchouka",
+  "display_name": "Chakchouka",
+  "aliases": [
+   "shakshuka",
+   "chakchouka tounsia",
+   "شكشوكة"
+  ]
+ },
+ {
+  "label": "merguez",
+  "display_name": "Merguez",
+  "aliases": [
+   "mirgaz",
+   "spicy sausage",
+   "مرقاز"
+  ]
+ },
+ {
+  "label": "fricasse",
+  "display_name": "Fricassé",
+  "aliases": [
+   "fricassee",
+   "tuna bun",
+   "فريكاسي"
+  ]
+ },
+ {
+  "label": "makroudh",
+  "display_name": "Makroudh",
+  "aliases": [
+   "makroud",
+   "date pastry",
+   "مقروض"
+  ]
+ },
+ {
+  "label": "bambalouni",
+  "display_name": "Bambalouni",
+  "aliases": [
+   "bambaloni",
+   "tunisian doughnut",
+   "بمبلوني"
+  ]
+ },
+ {
+  "label": "harissa",
+  "display_name": "Harissa",
+  "aliases": [
+   "hrissa",
+   "chili paste",
+   "هريسة"
+  ]
+ },
+ {
+  "label": "kamounia",
+  "display_name": "Kamounia",
+  "aliases": [
+   "kamouniya",
+   "cumin stew",
+   "كمونية"
+  ]
+ },
+ {
+  "label": "assida_zgougou",
+  "display_name": "Assida Zgougou",
+  "aliases": [
+   "asida zkoukou",
+   "zgougou",
+   "عصيدة زقوقو"
+  ]
+ }
 ]

@@ -10,3 +10,7 @@ venv/
 
 # Local Netlify folder
 .netlify
+tn_datasets/
+models/
+frontend/dist-netlify/
+.netlify/
