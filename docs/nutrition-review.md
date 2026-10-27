@@ -56,3 +56,4 @@ Added on request: 16 Tunisian dishes, selectable via the "Wrong food?" search (t
 | Fricassé | 300 | 10.0 | 28 | 17.0 | 130 |
 | Makroudh | 400 | 5.0 | 62 | 15.0 | 60 |
 | Bambalouni | 330 | 6.0 | 48 | 12.5 | 90 |
+| Makrouna | 155 | 6.5 | 22 | 4.5 | 350 |

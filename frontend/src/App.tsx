@@ -125,7 +125,7 @@ export default function App() {
             <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-medium">
               <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">ViT · Food-101</span>
               <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">🇹🇳 Tunisian model · 19 dishes</span>
-              <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">120 foods · FR/AR search</span>
+              <span className="rounded-full bg-white/80 px-2 py-0.5 text-slate-500 ring-1 ring-slate-200">121 foods · FR/AR search</span>
             </div>
           </div>
         </header>
